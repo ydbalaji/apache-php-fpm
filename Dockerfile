@@ -57,38 +57,38 @@ RUN a2enmod ssl \
     && a2enmod vhost_alias \
     && a2enmod remoteip
 
-## Install php7.4
+## Install php7.3
 RUN apt-get update ; \
     apt-get install -y \
-    php7.4 \
-    php7.4-apcu \
-    php7.4-bcmath \
-    php7.4-calendar \
-    php7.4-cli \
-    php7.4-common \
-    php7.4-curl \
-    php7.4-exif \
-    php7.4-fpm \
-    php7.4-gd  \
-    php7.4-imagick \
-    php7.4-imap \
-    php7.4-intl \
-    php7.4-json \
-    php7.4-ldap \
-    php7.4-mbstring \
-    php7.4-mysql \
-    php7.4-mysqli \
-    php7.4-opcache \
-    php7.4-pdo \
-    php7.4-pgsql \
-    php7.4-redis \
-    php7.4-soap \
-    php7.4-sqlite3 \
-    php7.4-sqlite \
-    php7.4-xml \
-    php7.4-xsl \
-    php7.4-zip  \
-    libapache2-mod-php7.4 \
+    php7.3 \
+    php7.3-apcu \
+    php7.3-bcmath \
+    php7.3-calendar \
+    php7.3-cli \
+    php7.3-common \
+    php7.3-curl \
+    php7.3-exif \
+    php7.3-fpm \
+    php7.3-gd  \
+    php7.3-imagick \
+    php7.3-imap \
+    php7.3-intl \
+    php7.3-json \
+    php7.3-ldap \
+    php7.3-mbstring \
+    php7.3-mysql \
+    php7.3-mysqli \
+    php7.3-opcache \
+    php7.3-pdo \
+    php7.3-pgsql \
+    php7.3-redis \
+    php7.3-soap \
+    php7.3-sqlite3 \
+    php7.3-sqlite \
+    php7.3-xml \
+    php7.3-xsl \
+    php7.3-zip  \
+    libapache2-mod-php7.3 \
     php-zmq \
 	php-memcached \
 	php-igbinary \
@@ -97,7 +97,7 @@ RUN apt-get update ; \
     
 
 ## Activate PHP 7.4 Cli
-RUN update-alternatives --set php /usr/bin/php7.4
+RUN update-alternatives --set php /usr/bin/php7.3
 
 ## Installing Composer from dockerimage
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -113,7 +113,7 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ## Copy the Apache Config file for Php-fpm
-# COPY php7.4-fpm.conf /etc/apache2/conf-available/php7.4-fpm.conf
+# COPY php7.3-fpm.conf /etc/apache2/conf-available/php7.3-fpm.conf
 
 ## Copy the index.php to /var/www/html
 COPY index.php /var/www/html/index.php
@@ -122,7 +122,7 @@ RUN sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php/7.4/fpm/php-fpm.conf
 
 RUN mkdir -p /var/log/php-fpm
 RUN mkdir -p /var/run/php
-RUN a2enconf php7.4-fpm
+RUN a2enconf php7.3-fpm
 
 ## Ports 80 and 443
 EXPOSE 80
