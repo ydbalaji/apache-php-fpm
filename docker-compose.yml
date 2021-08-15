@@ -1,0 +1,26 @@
+---
+version: '3'
+
+services:
+  apache-php-fpm:
+    # build: './'
+    image: apache-php-fpm:latest
+    container_name: apache-php-fpm
+    ports:
+      - "80:80"
+    restart: on-failure
+    # volumes: ['./test:/var/www/html:rw,delegated']
+
+  mysql:
+    image: mysql:5.7
+    container_name: apache-php-fpm-mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+    restart: on-failure
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql
