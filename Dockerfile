@@ -96,7 +96,7 @@ RUN apt-get update ; \
     mysql-client
     
 
-## Activate PHP 7.4 Cli
+## Activate PHP7.3 Cli
 RUN update-alternatives --set php /usr/bin/php7.3
 
 ## Installing Composer from dockerimage
@@ -118,7 +118,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ## Copy the index.php to /var/www/html
 COPY index.php /var/www/html/index.php
 
-RUN sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php/7.4/fpm/php-fpm.conf
+RUN sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php/7.3/fpm/php-fpm.conf
 
 RUN mkdir -p /var/log/php-fpm
 RUN mkdir -p /var/run/php

@@ -4,7 +4,7 @@ version: '3'
 services:
   apache-php-fpm:
     # build: './'
-    image: apache-php-fpm:latest
+    image: apache-php-fpm:7.3
     container_name: apache-php-fpm
     ports:
       - "80:80"
