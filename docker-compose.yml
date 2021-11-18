@@ -3,8 +3,8 @@ version: '3'
 
 services:
   apache-php-fpm:
-    # build: './'
-    image: apache-php-fpm:latest
+    build: './'
+    # image: apache-php-fpm:latest
     container_name: apache-php-fpm
     ports:
       - "80:80"

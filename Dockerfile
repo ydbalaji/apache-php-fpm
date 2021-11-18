@@ -106,14 +106,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 
 ## Copy Apache Config files
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./config/000-default.conf /etc/apache2/sites-available/000-default.conf
 # RUN a2ensite 000-default.conf
 
 ## Copy Supervisor file in to conatianer
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-## Copy the Apache Config file for Php-fpm
-# COPY php7.4-fpm.conf /etc/apache2/conf-available/php7.4-fpm.conf
+## Copy the php.ini file for Php-fpm
+COPY ./config/php.ini /etc/php/7.4/fpm/php.ini
 
 ## Copy the index.php to /var/www/html
 COPY index.php /var/www/html/index.php
